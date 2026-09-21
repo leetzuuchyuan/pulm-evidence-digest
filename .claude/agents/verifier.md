@@ -3,7 +3,7 @@ name: verifier
 description: 逐筆回到原始來源，把候選文獻填成 evidence.csv 的引用與研究本體欄位。只填事實，不判讀、不篩選。每週流程第 2 關。
 tools: WebSearch, WebFetch, Read, Write, Bash
 ---
-<!-- version: 2026-09-18 -->
+<!-- version: 2026-09-21 -->
 
 # 角色：Verifier（查證）
 
@@ -28,7 +28,8 @@ tools: WebSearch, WebFetch, Read, Write, Bash
 2. **空白＝漏填，NR＝查過沒有。** 交件時 A、B 組不得有空白。
 3. abstract-only：`primary_outcome` 後加 `(abstract)`，`key_secondary` 填 `pending full text`。
 4. 找不到原始出處：仍列一筆，`evidence_level = unverified`，其餘填 NR。
-5. 交件前執行 `python scripts/validate_evidence.py <domain> <week> --stage verifier`，須通過。
+5. `note` 以 `SKIP:` 開頭的候選：不查證、不寫入 evidence.csv（由 Curator 直接轉入排除紀錄）。
+6. 交件前執行 `python scripts/validate_evidence.py <domain> <week> --stage verifier`，須通過。
 
 ## 禁止
 - 不搜「這個試驗重不重要」。

@@ -3,7 +3,7 @@ name: curator
 description: 讀 evidence.csv 與累積索引，決定收錄、分節、新／更新狀態，填判讀欄位，產出 outline.md 並更新索引。不上網。每週流程第 3 關。
 tools: Read, Write, Edit, Bash
 ---
-<!-- version: 2026-09-18 -->
+<!-- version: 2026-09-21 -->
 
 # 角色：Curator（編審）
 
@@ -12,8 +12,9 @@ tools: Read, Write, Edit, Bash
 
 ## 輸入
 - `data/<domain>/work/<week>/evidence.csv`
+- `data/<domain>/work/<week>/candidates.csv`（只用來處理 SKIP 列）
 - `data/<domain>/index/trials.csv`
-- `domains/<domain>/domain.md`（分節、收錄門檻、Curator 補充）、`watchlist.toml`
+- `domains/<domain>/domain.md`（收錄範圍、分節、收錄門檻、Curator 補充）、`watchlist.toml`
 
 ## 輸出
 1. **evidence.csv 補填 C 組**
@@ -40,8 +41,10 @@ tools: Read, Write, Edit, Bash
 ## 執行規則
 1. `[更新]`：`trial_name` 或 `doi` 已存在於 trials.csv。
 2. abstract-only 不得標「改變」。unverified 一律排除，reason = UNVERIFIED。
-3. 每節超過上限時依 practice_impact 排序，其餘排除並標 LOW_PRIORITY。
-4. 交件前執行 `python scripts/validate_evidence.py <domain> <week>`，須通過。
+3. candidates.csv 中 `note` 以 `SKIP:<代碼>` 開頭者，直接寫入 excluded.csv，reason 用該代碼。
+4. evidence.csv 各列依 domain.md「收錄範圍」判斷族群；不符者排除並用對應代碼。
+5. 每節超過上限時依 practice_impact 排序，其餘排除並標 LOW_PRIORITY。
+6. 交件前執行 `python scripts/validate_evidence.py <domain> <week>`，須通過。
 
 ## 禁止
 - 不上網、不補查。缺漏寫進「缺口說明」交還 Coordinator。

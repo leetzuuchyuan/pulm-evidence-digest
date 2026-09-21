@@ -26,12 +26,25 @@
 6. 🫀 ECMO（VV / VA / 適應症 / 撤機）
 7. 📘 Guideline 更新（ATS / SCCM / ESICM）
 
+## 收錄範圍（族群）
+- 只收**成人（≥18 歲）**。
+- **Scanner 預篩**：標題或摘要明確以下列族群為主者，照列入 candidates，但 `note` 以 `SKIP:PEDIATRIC` 開頭：
+  pediatric、paediatric、PICU、neonatal、NICU、preterm、infant、children、adolescent
+- **不預篩、交 Curator 判斷**：年齡涵蓋兒童與成人者；標題未說明年齡者；納入條件為 ≥16 歲者。
+- **Curator 判斷規則**：
+  - 全部受試者 <18 歲 → 排除，`PEDIATRIC`
+  - 混合年齡且有成人分層結果 → 收錄，`population` 註明「成人分層」，數字只取成人分層
+  - 混合年齡、無分層、以成人為主（如 ≥16 歲入組）→ 收錄
+  - 混合年齡、無分層、以兒童為主 → 排除，`PEDIATRIC`
+  - Guideline 同時涵蓋兒童與成人 → 收錄，只摘成人部分
+
 ## 收錄門檻與上限
 - 收錄：RCT、guideline、對 practice 有影響的大型觀察性研究或 meta-analysis
 - 每節上限 4 筆；超過依 practice_impact 排序
-- 排除代碼：`OUT_OF_SCOPE` / `DUPLICATE` / `LOW_PRIORITY` / `UNVERIFIED` / `PRECLINICAL` / `SINGLE_CENTER_SMALL`
+- 排除代碼：`OUT_OF_SCOPE` / `DUPLICATE` / `LOW_PRIORITY` / `UNVERIFIED` / `PRECLINICAL` / `SINGLE_CENTER_SMALL` / `PEDIATRIC`
 
 ## Verifier 欄位補充
+- `population` 必含**年齡範圍**（納入條件或實際中位數／範圍）
 - `population` 必含適用嚴重度指標：APACHE II / SOFA / P/F ratio / 休克定義，擇一以上
 - `primary_outcome` 優先：mortality（含時間點）、ventilator-free days、ICU LOS
 - `effect_size` 優先：mortality 的 RR 或 absolute risk difference > HR > MD
