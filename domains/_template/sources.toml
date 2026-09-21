@@ -1,0 +1,89 @@
+# 重症醫學 — 自動抓取來源（scripts/fetch_feeds.py 使用）
+# 新增期刊：複製一個 [[crossref]] 區塊，填 ISSN。
+# 第一次執行若某來源顯示「0 筆」，多半是 ISSN 或 URL 需要更正。
+
+contact_email = "REPLACE_WITH_YOUR_EMAIL"   # CrossRef polite pool 用，請改成妳自己的
+
+[filter]
+# 只對 filter = true 的來源生效（綜合期刊需要，專科期刊不需要）
+keywords = [
+  "critical", "intensive care", "icu", "critically ill",
+  "ards", "acute respiratory distress", "respiratory failure", "mechanical ventilation",
+  "ventilat", "peep", "driving pressure", "prone", "extubation", "tracheostomy",
+  "high-flow", "noninvasive ventilation",
+  "sepsis", "septic", "shock", "vasopressor", "norepinephrine", "vasopressin", "angiotensin",
+  "fluid", "balanced crystalloid", "albumin", "transfusion",
+  "hydrocortisone", "corticosteroid", "neuromuscular block", "sedation", "delirium", "nutrition",
+  "ecmo", "extracorporeal", "cardiac arrest", "resuscitation",
+  "acute kidney injury", "renal replacement", "subphenotype",
+]
+noise_regex = "erratum|correction|retraction|reply|in this issue|corrigendum"
+
+# ── 綜合期刊（需關鍵字過濾）───────────────────────────
+[[crossref]]
+name = "New England Journal of Medicine"
+issn = "0028-4793"
+filter = true
+max_items = 80
+
+[[crossref]]
+name = "JAMA"
+issn = "0098-7484"
+filter = true
+max_items = 80
+
+[[crossref]]
+name = "The Lancet"
+issn = "0140-6736"
+filter = true
+max_items = 80
+
+# ── 專科期刊（全收，交給 Scanner）───────────────────────
+[[crossref]]
+name = "The Lancet Respiratory Medicine"
+issn = "2213-2600"
+filter = true
+max_items = 40
+
+[[crossref]]
+name = "American Journal of Respiratory and Critical Care Medicine"
+issn = "1073-449X"
+filter = true
+max_items = 40
+
+[[crossref]]
+name = "Critical Care Medicine"
+issn = "0090-3493"
+max_items = 40
+
+[[crossref]]
+name = "Intensive Care Medicine"
+issn = "0342-4642"
+max_items = 40
+
+[[crossref]]
+name = "CHEST"
+issn = "0012-3692"
+filter = true
+max_items = 40
+
+[[crossref]]
+name = "Critical Care"
+issn = "1364-8535"
+max_items = 40
+
+[[crossref]]
+name = "Annals of Intensive Care"
+issn = "2110-5820"
+max_items = 30
+
+# ── RSS（CrossRef 的補充，抓 ahead-of-print）─────────────
+[[rss]]
+name = "AJRCCM eTOC"
+url = "https://www.atsjournals.org/action/showFeed?type=etoc&feed=rss&jc=ajrccm"
+filter = true
+
+[[rss]]
+name = "Lancet Respiratory Medicine current"
+url = "https://www.thelancet.com/rssfeed/lanres_current.xml"
+filter = true

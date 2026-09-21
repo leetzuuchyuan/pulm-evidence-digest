@@ -1,0 +1,13 @@
+# 追蹤中試驗 — Scanner 每週用試驗縮寫逐一精準搜尋
+# 有結果發表後，Curator 把 status 改成 "published" 並寫入 index/trials.csv
+# 這份清單由妳維護；Claude 只能「建議新增」，寫在 outline.md 的缺口說明
+
+[[trial]]
+name = "PANTHER"
+topic = "subphenotype 導向 ARDS 治療"
+status = "ongoing"
+
+[[trial]]
+name = "PROSPECT"
+topic = "prone positioning + NMB 於中度 ARDS"
+status = "ongoing"

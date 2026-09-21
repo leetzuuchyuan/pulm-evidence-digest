@@ -1,0 +1,42 @@
+name: Publish reports to wiki
+
+on:
+  push:
+    branches: [main]
+    paths: ["data/*/reports/**.md"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Clone wiki
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if ! git clone "https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.wiki.git" wiki; then
+            echo "::error::Wiki 尚未初始化：到 repo 的 Wiki 分頁建立第一頁（內容隨意），再重跑本 workflow。"
+            exit 1
+          fi
+
+      - name: Copy reports
+        run: |
+          shopt -s globstar nullglob
+          for f in data/*/reports/**/*.md; do
+            cp "$f" "wiki/$(basename "$f")"
+          done
+
+      - name: Commit & push
+        run: |
+          cd wiki
+          git config user.name "github-actions[bot]"
+          git config user.email "41898733+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then echo "No changes."; exit 0; fi
+          git commit -m "publish reports"
+          git push
