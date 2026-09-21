@@ -38,10 +38,20 @@
   - 混合年齡、無分層、以兒童為主 → 排除，`PEDIATRIC`
   - Guideline 同時涵蓋兒童與成人 → 收錄，只摘成人部分
 
-## 收錄門檻與上限
-- 收錄：RCT、guideline、對 practice 有影響的大型觀察性研究或 meta-analysis
-- 每節上限 4 筆；超過依 practice_impact 排序
-- 排除代碼：`OUT_OF_SCOPE` / `DUPLICATE` / `LOW_PRIORITY` / `UNVERIFIED` / `PRECLINICAL` / `SINGLE_CENTER_SMALL` / `PEDIATRIC`
+## 收錄門檻（證據等級）
+目標：只收**臨床上可直接使用**的高等級證據。以下條件以標題、摘要、期刊頁可見資訊判斷，屬客觀篩選，不是重要性排序。
+
+**通過（進主清單）**，符合任一：
+- **RCT**：多中心，且（n ≥ 300，或主要終點為病人重要結果：死亡、ventilator-free days、器官支持天數、功能預後）
+- **Guideline**：國際或主要學會正式發布的指引、focused update、官方 consensus／clinical practice statement（例：Surviving Sepsis Campaign、ESICM／ATS ARDS guideline、SCCM、ERS、KDIGO）
+- **大型研究**：多中心或全國性資料庫，n ≥ 5,000；或以 RCT 為主、納入 ≥ 5 個 RCT 的 meta-analysis
+- **watchlist 試驗**：有新結果即通過，不受上述條件限制
+
+**預篩略過（照列，note 標 `SKIP:LOW_EVIDENCE`）**：
+單中心 RCT、pilot／feasibility、n < 300 且主要終點為生理或 biomarker 指標、post hoc／secondary analysis、小型觀察性研究、case series、narrative review、protocol 論文、physiology／crossover 研究
+
+**Curator 端上限**：每節最多 4 筆；超過依 practice_impact 排序，其餘標 LOW_PRIORITY
+**排除代碼**：`OUT_OF_SCOPE` / `DUPLICATE` / `LOW_PRIORITY` / `UNVERIFIED` / `PRECLINICAL` / `SINGLE_CENTER_SMALL` / `PEDIATRIC` / `LOW_EVIDENCE`
 
 ## Verifier 欄位補充
 - `population` 必含**年齡範圍**（納入條件或實際中位數／範圍）
