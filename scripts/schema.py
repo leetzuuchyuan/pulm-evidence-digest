@@ -24,5 +24,5 @@ ENUMS = {
     "evidence_level": {"full-text", "abstract-only", "preprint", "guideline", "unverified"},
     "status": {"新", "[更新]", "追蹤中"},
     "practice_impact": {"改變", "支持現況", "不足以改變", "待驗證"},
-    "item_type": {"RCT", "observational", "guideline", "meta-analysis", "conference-abstract", "other"},
+    "item_type": {"RCT", "observational", "guideline", "meta-analysis", "conference-abstract", "other", "narrative-review"},
 }

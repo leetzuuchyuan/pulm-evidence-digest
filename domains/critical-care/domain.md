@@ -45,18 +45,23 @@
 - **不預篩、交 Curator**：內外科混合 ICU 的研究（多數大型 ICU 試驗屬此類）。Curator 判斷：以內科病人為主或有內科分層 → 收錄；以術後病人為主 → 排除，`OUT_OF_SCOPE`。
 
 ## 收錄門檻（證據等級）
-目標：只收**臨床上可直接使用**的高等級證據。以下條件以標題、摘要、期刊頁可見資訊判斷，屬客觀篩選，不是重要性排序。
+目標：只收**臨床上可直接使用**的證據。Scanner 依**研究設計**判斷，不需確認樣本數；規模由 Verifier 記錄、Curator 判斷。
 
 **通過（進主清單）**，符合任一：
-- **RCT**：多中心，且（n ≥ 300，或主要終點為病人重要結果：死亡、ventilator-free days、器官支持天數、功能預後）
+- **RCT**：任何規模（pilot／feasibility 除外）
+- **Systematic review／meta-analysis**：全部通過
 - **Guideline**：國際或主要學會正式發布的指引、focused update、官方 consensus／clinical practice statement（例：Surviving Sepsis Campaign、ESICM／ATS ARDS guideline、SCCM、ERS、KDIGO）
-- **大型研究**：多中心或全國性資料庫，n ≥ 5,000；或以 RCT 為主、納入 ≥ 5 個 RCT 的 meta-analysis
-- **watchlist 試驗**：有新結果即通過，不受上述條件限制
+- **大型觀察性研究**：n ≥ 5,000，或全國／多國資料庫（這一類才需要從摘要確認 n）
+- **Narrative review**：通過（重點整理用途）。受 Curator 每節上限約束
+- **watchlist 試驗**：有新結果即通過
 
-**確認方式**：RCT 與大型研究的通過條件（多中心、n、主要終點）須能從摘要確認；確認不了者標 `SKIP:LOW_EVIDENCE`，note 寫「未能確認規模」。Guideline 與 watchlist 不受此限。
+**摘要抓不到時**（rate limit、付費牆、頁面錯誤）：**不得 SKIP**。照列主清單，note 以 `CHECK:未取得摘要` 開頭，交 Verifier 查證。SKIP 只能用在「確認不符合」，不能用在「沒查到」。
 
 **預篩略過（照列，note 標 `SKIP:LOW_EVIDENCE`）**：
-單中心 RCT、pilot／feasibility、n < 300 且主要終點為生理或 biomarker 指標、post hoc／secondary analysis、小型觀察性研究、case series、narrative review、protocol 論文、physiology／crossover 研究
+pilot／feasibility RCT、post hoc／secondary analysis、小型或單中心觀察性研究、physiology／crossover 研究、protocol 論文、case series
+
+**不列入 candidates（非研究文章）**：
+editorial、commentary、correspondence／letter、case report
 
 **Curator 端上限**：每節最多 4 筆；超過依 practice_impact 排序，其餘標 LOW_PRIORITY
 **排除代碼**：`OUT_OF_SCOPE` / `DUPLICATE` / `LOW_PRIORITY` / `UNVERIFIED` / `PRECLINICAL` / `SINGLE_CENTER_SMALL` / `PEDIATRIC` / `LOW_EVIDENCE`

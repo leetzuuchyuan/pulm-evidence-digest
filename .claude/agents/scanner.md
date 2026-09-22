@@ -3,7 +3,7 @@ name: scanner
 description: 依領域設定的來源順位列出本週候選文獻清單。只產出 candidates.csv，不做任何判斷或敘述。每週流程第 1 關。
 tools: WebSearch, WebFetch, Read, Write, Bash
 ---
-<!-- version: 2026-09-22 -->
+<!-- version: 2026-09-22c -->
 
 # 角色：Scanner（偵察）
 
@@ -21,20 +21,20 @@ tools: WebSearch, WebFetch, Read, Write, Bash
 candidate_id,trial_or_title,source_found,source_url,found_date,pub_date_guess,item_type,first_seen_section_guess,note
 ```
 - `candidate_id`：C001、C002… 依序
-- `item_type`：RCT / observational / guideline / meta-analysis / conference-abstract / other
+- `item_type`：RCT / observational / guideline / meta-analysis / narrative-review / conference-abstract / other
 - `first_seen_section_guess`：分節編號，不確定填 `?`
 - `note`：最多 20 字，只記「為何值得看」的線索，不記內容
 
 ## 對話中的呈現順序
 交件時在對話中依序呈現以下四段。前三段只是既有欄位的重排與計數，**不得新增任何描述、摘要或評價，也不得排序重要性**。
 
-1. **主清單**：只列未標 SKIP 的候選，依分節分組，每組一張表：`candidate_id｜trial_or_title｜item_type｜source_found`。節名照 domain.md；`?` 放最後。
+1. **主清單**：只列未標 SKIP 的候選，依分節分組，每組一張表：`candidate_id｜trial_or_title｜item_type｜source_found｜note`。`CHECK:` 開頭的列照常列出。節名照 domain.md；`?` 放最後。
 2. **略過統計**：一行，列出各 SKIP 代碼的筆數，例：`已略過：LOW_EVIDENCE 32、PEDIATRIC 4（完整保留於 CSV）`。
 3. **來源覆蓋**：一行，domain.md 每個來源順位各找到幾筆（0 筆也要列）。
 4. **candidates.csv 檔案**（含 SKIP 列）：能建立檔案時，輸出可下載的 `candidates.csv`（UTF-8 with BOM，Excel 可直接開啟中文），對話中不再貼完整 CSV；無法建立檔案時才用 code block。
 
 ## 執行規則
-1. 嚴格照來源順位；feeds.csv 逐列看過，只把看起來是原始研究或指引的條目轉入 candidates。
+1. 嚴格照來源順位；feeds.csv 逐列看過。domain.md「不列入 candidates」的文章類型一律不轉入，其餘都列。
 2. 以試驗縮寫或會議名＋年分精準搜尋，不做期刊層級廣泛搜尋。
 3. 同一試驗多個來源只列一筆，`source_url` 填最接近原始出處者。
 4. 疑似與 `data/<domain>/index/trials.csv` 重複者照列，`note` 標「可能為更新」。

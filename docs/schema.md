@@ -31,4 +31,4 @@ candidate_id,trial_name,week_id,reason
 - `evidence_level`：abstract-only / full-text / guideline / preprint / unverified
 - `status`：[更新] / 新 / 追蹤中
 - `practice_impact`：不足以改變 / 待驗證 / 支持現況 / 改變
-- `item_type`：RCT / conference-abstract / guideline / meta-analysis / observational / other
+- `item_type`：RCT / conference-abstract / guideline / meta-analysis / narrative-review / observational / other

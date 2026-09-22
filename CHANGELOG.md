@@ -4,6 +4,9 @@
 最新的寫在最上面。
 
 ## 2026-09-22
+- domain.md（critical-care）：narrative review 改為通過（重點整理用途），不再列於「不列入」；item_type 新增 narrative-review（schema.py、scanner.md v2026-09-22c）；writer.md（v2026-09-22）新增 review 條目格式（觸發：使用者決定，review 常為重點整理）
+- domain.md（critical-care）：證據門檻改為依研究設計判斷——RCT 任何規模、SR／MA 全部通過，只有大型觀察性研究需確認 n；摘要抓不到時改標 CHECK 不得 SKIP；narrative review 等非研究文章改為「不列入」（觸發：W38 scanner v3 主清單僅 3 筆，7 筆因 rate limit 被誤判 LOW_EVIDENCE；scanner 回報規則 1 與預篩清單衝突）
+- scanner.md（v2026-09-22b）：主清單加 note 欄顯示 CHECK；規則 1 改依 domain.md「不列入」清單
 - domain.md（critical-care）：新增「收錄範圍（臨床情境）」聚焦內科 ICU，手術相關以 SKIP:OUT_OF_SCOPE 預篩，保留 lung transplantation 術後內科照護；證據門檻新增「須從摘要確認」（觸發：W38 scanner v2 主清單 37 筆，含術後研究）
 - watchlist.toml：移除 PROSPECT（原主題填寫錯誤；同名 PROSpect 為兒科試驗）（觸發：W38 scanner 回報）
 - scanner.md、verifier.md、curator.md（v2026-09-22）：欄位順序改參照 context 的 schema.md；CSV 改為可下載檔案（UTF-8 BOM）（觸發：Claude.ai 看不到 scripts/schema.py；CSV 在對話中難讀）
