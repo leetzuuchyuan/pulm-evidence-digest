@@ -16,7 +16,7 @@ def main():
     base = ROOT / "data" / domain
     rows = []
     for p in sorted((base / "work").glob("*/evidence.csv")):
-        rows += [r for r in csv.DictReader(p.open(encoding="utf-8"))
+        rows += [r for r in csv.DictReader(p.open(encoding="utf-8-sig"))
                  if r.get("audit_status") == "pass" and r.get("section")]
 
     bib, seen, keys = [], set(), set()

@@ -26,7 +26,7 @@ Coordinator 只做四件事：確認狀態、發派、讀回報、決定下一�
 - 只改被點名的那一份檔案；一次只改一個角色。
 - 修改角色檔時，更新檔頭 `<!-- version: YYYY-MM-DD -->`。
 - 在 `CHANGELOG.md` 最上方加一條：日期、檔案、改了什麼、觸發原因（通常是哪週的 audit 哪一項）。
-- 欄位變更：只能在 `scripts/schema.py` 各清單**最後面新增**，不刪不改名；並同步更新相關角色檔。
+- 欄位變更：只能在 `scripts/schema.py` 各清單**最後面新增**，不刪不改名；並同步更新相關角色檔；改完執行 `python scripts/export_schema_md.py` 更新 `docs/schema.md`（Claude.ai Context 用）。
 - commit 訊息格式：`<檔名不含副檔名>: <一句話>`，例 `verifier: abstract-only 改填 pending full text`
 
 ## 絕對不做

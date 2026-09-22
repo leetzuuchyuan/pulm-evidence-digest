@@ -17,10 +17,10 @@ def main():
     ap.add_argument("--stage", choices=["verifier", "curator"], default="curator")
     a = ap.parse_args()
     p = ROOT / "data" / a.domain / "work" / a.week / "evidence.csv"
-    rows = list(csv.DictReader(p.open(encoding="utf-8")))
+    rows = list(csv.DictReader(p.open(encoding="utf-8-sig")))
     errs = []
 
-    header = next(csv.reader(p.open(encoding="utf-8")))
+    header = next(csv.reader(p.open(encoding="utf-8-sig")))
     if header != EVIDENCE:
         errs.append("表頭與 scripts/schema.py 不一致")
 

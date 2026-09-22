@@ -38,6 +38,12 @@
   - 混合年齡、無分層、以兒童為主 → 排除，`PEDIATRIC`
   - Guideline 同時涵蓋兒童與成人 → 收錄，只摘成人部分
 
+## 收錄範圍（臨床情境）
+- 聚焦**內科加護病房**、內科重症病人的照護。
+- **預篩略過（照列，note 標 `SKIP:OUT_OF_SCOPE`）**：麻醉與術中管理、手術前後照護（心臟、腹部、胸腔等術後 ICU）、手術術式或技術比較、外傷（含 TBI）、燒傷。
+- **例外，保留**：lung transplantation 術後的內科照護（PGD、排斥、感染、免疫抑制、呼吸器脫離、ECMO bridge）。**不含**任何術式或手術技術的探討。
+- **不預篩、交 Curator**：內外科混合 ICU 的研究（多數大型 ICU 試驗屬此類）。Curator 判斷：以內科病人為主或有內科分層 → 收錄；以術後病人為主 → 排除，`OUT_OF_SCOPE`。
+
 ## 收錄門檻（證據等級）
 目標：只收**臨床上可直接使用**的高等級證據。以下條件以標題、摘要、期刊頁可見資訊判斷，屬客觀篩選，不是重要性排序。
 
@@ -46,6 +52,8 @@
 - **Guideline**：國際或主要學會正式發布的指引、focused update、官方 consensus／clinical practice statement（例：Surviving Sepsis Campaign、ESICM／ATS ARDS guideline、SCCM、ERS、KDIGO）
 - **大型研究**：多中心或全國性資料庫，n ≥ 5,000；或以 RCT 為主、納入 ≥ 5 個 RCT 的 meta-analysis
 - **watchlist 試驗**：有新結果即通過，不受上述條件限制
+
+**確認方式**：RCT 與大型研究的通過條件（多中心、n、主要終點）須能從摘要確認；確認不了者標 `SKIP:LOW_EVIDENCE`，note 寫「未能確認規模」。Guideline 與 watchlist 不受此限。
 
 **預篩略過（照列，note 標 `SKIP:LOW_EVIDENCE`）**：
 單中心 RCT、pilot／feasibility、n < 300 且主要終點為生理或 biomarker 指標、post hoc／secondary analysis、小型觀察性研究、case series、narrative review、protocol 論文、physiology／crossover 研究

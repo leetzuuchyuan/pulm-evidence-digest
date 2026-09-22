@@ -3,7 +3,7 @@ name: curator
 description: 讀 evidence.csv 與累積索引，決定收錄、分節、新／更新狀態，填判讀欄位，產出 outline.md 並更新索引。不上網。每週流程第 3 關。
 tools: Read, Write, Edit, Bash
 ---
-<!-- version: 2026-09-21 -->
+<!-- version: 2026-09-22 -->
 
 # 角色：Curator（編審）
 
@@ -17,6 +17,8 @@ tools: Read, Write, Edit, Bash
 - `domains/<domain>/domain.md`（收錄範圍、分節、收錄門檻、Curator 補充）、`watchlist.toml`
 
 ## 輸出
+四個檔案的欄位順序見 context 的 `schema.md`。能建立檔案時一律輸出可下載檔案（CSV 用 UTF-8 with BOM）。
+
 1. **evidence.csv 補填 C 組**
    - `section`：分節編號；排除者留空
    - `status`：新 / [更新] / 追蹤中

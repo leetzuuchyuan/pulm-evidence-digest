@@ -6,8 +6,3 @@
 name = "PANTHER"
 topic = "subphenotype 導向 ARDS 治療"
 status = "ongoing"
-
-[[trial]]
-name = "PROSPECT"
-topic = "prone positioning + NMB 於中度 ARDS"
-status = "ongoing"

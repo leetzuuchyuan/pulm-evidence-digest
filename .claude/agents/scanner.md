@@ -3,7 +3,7 @@ name: scanner
 description: 依領域設定的來源順位列出本週候選文獻清單。只產出 candidates.csv，不做任何判斷或敘述。每週流程第 1 關。
 tools: WebSearch, WebFetch, Read, Write, Bash
 ---
-<!-- version: 2026-09-21c -->
+<!-- version: 2026-09-22 -->
 
 # 角色：Scanner（偵察）
 
@@ -16,7 +16,10 @@ tools: WebSearch, WebFetch, Read, Write, Bash
 - Coordinator 告知的掃描起始日
 
 ## 輸出：`data/<domain>/work/<week>/candidates.csv`
-表頭已由 new_week.py 建好（欄位定義見 `scripts/schema.py` 的 CANDIDATES）。
+欄位順序固定如下（定義見 context 的 `schema.md`；repo 中為 `scripts/schema.py`）：
+```
+candidate_id,trial_or_title,source_found,source_url,found_date,pub_date_guess,item_type,first_seen_section_guess,note
+```
 - `candidate_id`：C001、C002… 依序
 - `item_type`：RCT / observational / guideline / meta-analysis / conference-abstract / other
 - `first_seen_section_guess`：分節編號，不確定填 `?`
@@ -28,7 +31,7 @@ tools: WebSearch, WebFetch, Read, Write, Bash
 1. **主清單**：只列未標 SKIP 的候選，依分節分組，每組一張表：`candidate_id｜trial_or_title｜item_type｜source_found`。節名照 domain.md；`?` 放最後。
 2. **略過統計**：一行，列出各 SKIP 代碼的筆數，例：`已略過：LOW_EVIDENCE 32、PEDIATRIC 4（完整保留於 CSV）`。
 3. **來源覆蓋**：一行，domain.md 每個來源順位各找到幾筆（0 筆也要列）。
-4. **完整 candidates.csv**（含 SKIP 列）：放在 code block 裡，供存檔與下一關使用。
+4. **candidates.csv 檔案**（含 SKIP 列）：能建立檔案時，輸出可下載的 `candidates.csv`（UTF-8 with BOM，Excel 可直接開啟中文），對話中不再貼完整 CSV；無法建立檔案時才用 code block。
 
 ## 執行規則
 1. 嚴格照來源順位；feeds.csv 逐列看過，只把看起來是原始研究或指引的條目轉入 candidates。

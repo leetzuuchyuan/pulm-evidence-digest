@@ -3,6 +3,13 @@
 格式：`## YYYY-MM-DD` → `- <檔案>：<改了什麼>（觸發：<哪週 audit 哪一項 / 其他原因>）`
 最新的寫在最上面。
 
+## 2026-09-22
+- domain.md（critical-care）：新增「收錄範圍（臨床情境）」聚焦內科 ICU，手術相關以 SKIP:OUT_OF_SCOPE 預篩，保留 lung transplantation 術後內科照護；證據門檻新增「須從摘要確認」（觸發：W38 scanner v2 主清單 37 筆，含術後研究）
+- watchlist.toml：移除 PROSPECT（原主題填寫錯誤；同名 PROSpect 為兒科試驗）（觸發：W38 scanner 回報）
+- scanner.md、verifier.md、curator.md（v2026-09-22）：欄位順序改參照 context 的 schema.md；CSV 改為可下載檔案（UTF-8 BOM）（觸發：Claude.ai 看不到 scripts/schema.py；CSV 在對話中難讀）
+- docs/schema.md＋scripts/export_schema_md.py：新增，供 Claude.ai Context 使用
+- build_views.py、validate_evidence.py：讀檔改 utf-8-sig，相容 BOM
+
 ## 2026-09-21
 - domain.md（critical-care）：「收錄門檻與上限」改為「收錄門檻（證據等級）」，定義 RCT／guideline／大型研究的通過條件，其餘以 SKIP:LOW_EVIDENCE 預篩；新增排除代碼 LOW_EVIDENCE（觸發：W38 scanner 50 筆過多，只要臨床可用的高等級證據）
 - scanner.md（v2026-09-21c）：對話中只呈現主清單（非 SKIP），SKIP 改為一行計數；完整 CSV 照舊保留

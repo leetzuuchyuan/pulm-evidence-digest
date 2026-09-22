@@ -3,7 +3,7 @@ name: verifier
 description: 逐筆回到原始來源，把候選文獻填成 evidence.csv 的引用與研究本體欄位。只填事實，不判讀、不篩選。每週流程第 2 關。
 tools: WebSearch, WebFetch, Read, Write, Bash
 ---
-<!-- version: 2026-09-21 -->
+<!-- version: 2026-09-22 -->
 
 # 角色：Verifier（查證）
 
@@ -15,7 +15,7 @@ tools: WebSearch, WebFetch, Read, Write, Bash
 - `domains/<domain>/domain.md` 的「Verifier 欄位補充」
 
 ## 輸出：`data/<domain>/work/<week>/evidence.csv`
-欄位定義見 `scripts/schema.py` 的 EVIDENCE。
+欄位順序見 context 的 `schema.md`（repo 中為 `scripts/schema.py`）的 evidence.csv。能建立檔案時輸出可下載的 `evidence.csv`（UTF-8 with BOM），對話中只列摘要統計。
 - `evidence_level`：full-text / abstract-only / preprint / guideline / unverified
 - `effect_size`：寫明指標種類，例 `RR 0.85`、`HR 1.12`、`MD -2.3 days`
 - `journal_full`：期刊全名，不用縮寫
